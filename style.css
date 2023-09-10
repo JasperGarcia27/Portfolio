@@ -1,0 +1,444 @@
+/* General */
+/*?CSS Reset*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* !Navbar */
+nav {
+    background-color: #BBD0FF;
+}
+
+nav a {
+    font-family: 'Tektur', cursive;
+    color: black;
+}
+/* !Navbar Style End */
+
+/* !Landing */
+#profile-picture{
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
+	border: 5px solid lightblue;
+
+}
+
+#landing {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #BAC8FF;
+	background: 
+	    linear-gradient(
+
+	        rgba(0, 0, 0, 0.59),
+	        rgba(0, 0, 0, 0.59)
+	        ),
+	    url("./images/cover-g.png");
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    ;
+	height: 100vh;
+}
+
+#landing .content-header {
+	font-family: 'Kdam Thmor Pro', sans-serif;
+	color: #ffffff;
+	font-size: 50px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 72px; 
+	letter-spacing: -1.28px;
+}
+
+#landing .content-text {
+	color: #FFF;
+	font-family: Montserrat;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+#landing p {
+	font-family: 'Montserrat', sans-serif;
+}
+#landing-btn-contact {
+	display: flex;
+	padding: 12px 32px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 999px;
+	color: var(--button-text-button-primary-text, #FFF);
+	text-align: center;
+	font-family: 'Aldrich', sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px; 
+}
+
+#landing-btn-projects {
+	display: flex;
+	padding: 12px 32px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 999px;
+	background: #BBD0FF;
+	color: var(--button-text-button-primary-text, #000000);
+	text-align: center;
+	font-family: 'Aldrich', sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px; 
+}
+/* !Landing Style End */
+
+/* !Project */
+#projects {
+    background:url("./images/cover.jpg");
+	    background-size: cover;
+}
+.project-title {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+#projects .section-title {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+	color: #ffffff;
+	font-size: 45px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 72px;
+	letter-spacing: -1.28px;
+}
+.card-title {
+    font-family: 'Tektur', cursive;
+}
+.card-text {
+    font-family: 'Preahvihear', sans-serif;
+}
+.swiper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+}
+
+.swiper-slide img {
+    display: block;
+}
+.card-body a {
+	text-decoration: none;
+}
+/* !Project Style End*/
+
+/* !Tools */
+#tools {
+	align-items: center;
+	background-color: #BAC8FF;
+	background: 
+	    linear-gradient(
+
+	        rgba(255, 0, 0, 0.59),
+	        rgba(42, 21, 21, 0.59)
+	        ),
+
+	    url("./images/cover-c.jpg");
+	    background-repeat: no-repeat;
+	    background-size: cover;
+		background-attachment: fixed;
+	    ;
+}
+#tools .section-title {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+	color: #ffffff;
+	font-size: 45px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 72px;
+	letter-spacing: -1.28px;
+}
+
+#tools .border-content{
+    background-image: linear-gradient(lightblue, royalblue);
+}
+
+.slider input{display: none;}
+.testimonials{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 350px;
+    perspective: 1000px;
+    overflow: hidden;
+}
+.testimonials .item{
+    width: 300px;
+    padding: 30px;
+    border-radius: 50px;
+    background-color: #ffffff;
+    position: absolute;
+    transition: transform 0.4s;
+    user-select: none;
+    cursor: pointer;
+}
+.testimonials .item h1{font-size: 114px; color: white;}
+.dots{display: flex; justify-content: center;align-items: center;}
+.dots label{
+	height: 5px;
+	width: 5px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: #413B52;
+	margin: 7px;
+	transition-duration: 0.2s;
+}
+#t-1:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-4"],
+#t-5:checked ~ .dots label[for="t-5"],
+#t-6:checked ~ .dots label[for="t-6"],
+#t-7:checked ~ .dots label[for="t-7"],
+#t-8:checked ~ .dots label[for="t-8"],
+#t-9:checked ~ .dots label[for="t-9"],
+#t-10:checked ~ .dots label[for="t-10"],
+#t-11:checked ~ .dots label[for="t-11"],
+#t-12:checked ~ .dots label[for="t-12"],
+#t-13:checked ~ .dots label[for="t-13"],
+#t-14:checked ~ .dots label[for="t-14"],
+#t-15:checked ~ .dots label[for="t-15"]{
+	transform: scale(2);
+	background-color: #0044ff;
+	box-shadow: 0px 0px 0px 3px #dddddd24;
+}
+
+#t-1:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-4"],
+#t-3:checked ~ .testimonials label[for="t-5"],
+#t-4:checked ~ .testimonials label[for="t-6"],
+#t-5:checked ~ .testimonials label[for="t-7"],
+#t-6:checked ~ .testimonials label[for="t-8"],
+#t-7:checked ~ .testimonials label[for="t-9"],
+#t-8:checked ~ .testimonials label[for="t-10"],
+#t-9:checked ~ .testimonials label[for="t-11"],
+#t-10:checked ~ .testimonials label[for="t-12"],
+#t-11:checked ~ .testimonials label[for="t-13"],
+#t-12:checked ~ .testimonials label[for="t-14"],
+#t-13:checked ~ .testimonials label[for="t-15"],
+#t-14:checked ~ .testimonials label[for="t-1"],
+#t-15:checked ~ .testimonials label[for="t-2"]{
+    transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+    z-index: 2;
+}
+
+#t-1:checked ~ .testimonials label[for="t-2"],
+#t-2:checked ~ .testimonials label[for="t-3"],
+#t-3:checked ~ .testimonials label[for="t-4"],
+#t-4:checked ~ .testimonials label[for="t-5"],
+#t-5:checked ~ .testimonials label[for="t-6"],
+#t-6:checked ~ .testimonials label[for="t-7"],
+#t-7:checked ~ .testimonials label[for="t-8"],
+#t-8:checked ~ .testimonials label[for="t-9"],
+#t-9:checked ~ .testimonials label[for="t-10"],
+#t-10:checked ~ .testimonials label[for="t-11"],
+#t-11:checked ~ .testimonials label[for="t-12"],
+#t-12:checked ~ .testimonials label[for="t-13"],
+#t-13:checked ~ .testimonials label[for="t-14"],
+#t-14:checked ~ .testimonials label[for="t-15"],
+#t-15:checked ~ .testimonials label[for="t-1"]{
+    transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+    z-index: 3;
+}
+
+#t-2:checked ~ .testimonials label[for="t-1"],
+#t-3:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-3"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-6:checked ~ .testimonials label[for="t-5"],
+#t-7:checked ~ .testimonials label[for="t-6"],
+#t-8:checked ~ .testimonials label[for="t-7"],
+#t-9:checked ~ .testimonials label[for="t-8"],
+#t-10:checked ~ .testimonials label[for="t-9"],
+#t-11:checked ~ .testimonials label[for="t-10"],
+#t-12:checked ~ .testimonials label[for="t-11"],
+#t-13:checked ~ .testimonials label[for="t-12"],
+#t-14:checked ~ .testimonials label[for="t-13"],
+#t-15:checked ~ .testimonials label[for="t-14"],
+#t-1:checked ~ .testimonials label[for="t-15"]{
+    transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+    z-index: 3;
+}
+
+#t-3:checked ~ .testimonials label[for="t-1"],
+#t-4:checked ~ .testimonials label[for="t-2"],
+#t-5:checked ~ .testimonials label[for="t-3"],
+#t-6:checked ~ .testimonials label[for="t-4"],
+#t-7:checked ~ .testimonials label[for="t-5"],
+#t-8:checked ~ .testimonials label[for="t-6"],
+#t-9:checked ~ .testimonials label[for="t-7"],
+#t-10:checked ~ .testimonials label[for="t-8"],
+#t-11:checked ~ .testimonials label[for="t-9"],
+#t-12:checked ~ .testimonials label[for="t-10"],
+#t-13:checked ~ .testimonials label[for="t-11"],
+#t-14:checked ~ .testimonials label[for="t-12"],
+#t-15:checked ~ .testimonials label[for="t-13"],
+#t-2:checked ~ .testimonials label[for="t-15"],
+#t-1:checked ~ .testimonials label[for="t-14"]{
+    transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+    
+}
+
+#t-1:checked ~ .testimonials label[for="t-1"],
+#t-2:checked ~ .testimonials label[for="t-2"],
+#t-3:checked ~ .testimonials label[for="t-3"],
+#t-4:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-5"],
+#t-6:checked ~ .testimonials label[for="t-6"],
+#t-7:checked ~ .testimonials label[for="t-7"],
+#t-8:checked ~ .testimonials label[for="t-8"],
+#t-9:checked ~ .testimonials label[for="t-9"],
+#t-10:checked ~ .testimonials label[for="t-10"],
+#t-11:checked ~ .testimonials label[for="t-11"],
+#t-12:checked ~ .testimonials label[for="t-12"],
+#t-13:checked ~ .testimonials label[for="t-13"],
+#t-14:checked ~ .testimonials label[for="t-14"],
+#t-15:checked ~ .testimonials label[for="t-14"],
+#t-15:checked ~ .testimonials label[for="t-15"]{
+    
+    z-index: 4;
+}
+.tools-text {
+	font-family: 'Orbitron', sans-serif;
+}
+/* !Tools Style End */
+
+/* !Contact */
+#contact {
+	color: white;
+	background-image: linear-gradient(rgb(18, 43, 187), black);
+}
+
+#contact-header {
+	font-family: 'Kdam Thmor Pro', sans-serif;
+	font-size: 45px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 72px;
+	letter-spacing: -1.28px;
+}
+
+#contact-info {
+	font-family: 'Aldrich', sans-serif;
+	font-size: 40px;
+}
+
+#contact p, .info-contact {
+	font-size: 20px;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+#contact form input {
+	border: 1px solid #12C6FF;
+	background: #FFF;
+	color: #003363;
+	font-family: Montserrat;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	justify-content: center;
+}
+
+#contact form textarea {
+	border: 1px solid #12C6FF;
+	background: #FFF;
+	resize: none;
+}
+
+#form-btn{
+	display: flex;
+	padding: 12px 32px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	border-radius: 999px;
+	background: #008cff;
+	color: var(--button-text-button-primary-text, #FFF);
+	text-align: center;
+	font-family: 'Aldrich', sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px; 
+}
+
+#contact-image {
+	color: white;
+    background: 
+        linear-gradient(
+
+            rgba(18, 43, 187, 0.59),
+            rgba(0, 0, 0, 0.59)
+        ),
+        url("./images/contact.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+#contact form .form-group label {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+	font-style: normal;
+	line-height: normal; 
+}
+
+#contact form .form-control {
+	border: 1px solid #0066ff;
+	background: #FFF;
+	color: #000000;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+
+}
+.icon {
+	color: white;
+}
+/* !Contact Style End*/
+
+/* !Footer */
+footer {
+    color: #FFF2E4;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    background-color: #0d385c;
+    color: #FFF2E4;
+
+}
+footer a {
+	text-decoration: none;
+	color: white;
+}
+/* !Footer Style End*/
