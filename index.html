@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JICG Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="shorcut icon" type="image/png" href="./assets/logo/icon.png">
+
+    <link rel="stylesheet" href="./style.css">
+       
+</head>
+
+<body>
+    <!-- ============================
+        GALAXY LOADER + IRON MAN HUD
+    ============================= -->
+    <div id="galaxyLoader" role="status" aria-label="Loading">
+        <!-- Galaxy starfield with shooting stars -->
+        <canvas id="galaxyCanvas"></canvas>
+        
+        <!-- Nebula glows -->
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
+        
+        <!-- Scan lines overlay -->
+        <div class="hud-scanlines"></div>
+        
+        <!-- HUD corner data -->
+        <div class="hud-corner hud-corner-tl">
+            <span>SYS.STATUS: <span class="accent">ONLINE</span></span>
+            <span>POWER: <span class="accent">100%</span></span>
+            <span>ARC.RCTR: <span class="accent">STABLE</span></span>
+        </div>
+        <div class="hud-corner hud-corner-tr">
+            <span>J.A.R.V.I.S</span>
+            <span class="accent">v4.7.2</span>
+            <span>SECURE LINK</span>
+        </div>
+        <div class="hud-corner hud-corner-bl">
+            <span>LAT: 14.1964°N</span>
+            <span>LON: 120.8783°E</span>
+            <span class="accent">TARGET LOCKED</span>
+        </div>
+        <div class="hud-corner hud-corner-br">
+            <span>CPU: <span class="accent">72%</span></span>
+            <span>MEM: <span class="accent">3.4GB</span></span>
+            <span>NET: <span class="accent">SECURE</span></span>
+        </div>
+
+        <!-- Main loader content -->
+        <div class="loader-content">
+            <div class="iron-hud">
+            <div class="hud-bracket hud-bracket-tl"></div>
+            <div class="hud-bracket hud-bracket-tr"></div>
+            <div class="hud-bracket hud-bracket-bl"></div>
+            <div class="hud-bracket hud-bracket-br"></div>
+            
+            <div class="hud-ring-outer"></div>
+            <div class="hud-ticks" id="hudTicks"></div>
+            <div class="hud-ring-mid"></div>
+            <div class="hud-ring-inner"></div>
+            <div class="arc-core"></div>
+            </div>
+
+            <div class="loader-info">
+            <div class="loader-title">INITIALIZING</div>
+            <div class="loader-status" id="loaderStatus">Booting J.A.R.V.I.S<span class="blink"></span></div>
+            <div class="loader-progress"></div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hex Background -->
+    <div class="hex-bg" aria-hidden="true"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!-- ============================
+        NAVIGATION
+    ============================= -->
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="#hero" class="nav-logo">
+            <div class="arc" aria-hidden="true"></div>
+            <span>DEVFOLIO</span>
+        </a>
+
+        <ul class="nav-links" role="list">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#stack">Stack</a></li>
+            <li><a href="#experience">Timeline</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme"></button>
+            <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0" aria-expanded="false">
+            <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#stack" class="mobile-link">Stack</a>
+        <a href="#experience" class="mobile-link">Timeline</a>
+        <a href="#services" class="mobile-link">Services</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section id="hero" aria-label="Hero section">
+            <div class="hero-energy-ring" aria-hidden="true"></div>
+            <div class="hero-energy-ring-2" aria-hidden="true"></div>
+
+            <div class="hero-inner">
+                <div class="hero-text reveal">
+                <div class="hero-status">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    Available for opportunities
+                </div>
+                <h1 class="hero-headline">
+                    <span>Full-Stack</span>
+                    <span class="line-gold">Web Developer</span>
+                    <!-- <span class="line-blue">Laravel Specialist</span> -->
+                </h1>
+                <p class="hero-sub">
+                    I build scalable web systems and automation solutions that turn complex workflows into efficient, production-ready applications.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#projects" class="btn-primary">
+                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i> Get in Touch
+                    </a>
+                </div>
+                </div>
+
+                <div class="hero-visual reveal reveal-delay-2">
+                    <div class="hero-card">
+                        <div class="profile-ring" aria-hidden="true">
+                            <canvas id="orbitalCanvas" width="180" height="180" aria-hidden="true"></canvas>
+                            <div class="profile-img-placeholder" role="img" aria-label="Profile photo placeholder">
+                                <!-- <i class="fa-solid fa-user-tie" aria-hidden="true"></i> -->
+                                <!-- <img src="profile.png" alt="Your Name" class="profile-img" /> -->
+                                <img src="./assets/images/pic.png" alt="Your Name" class="profile-img" />
+                            </div>
+                        </div>
+                        <div class="hero-card-name">Jasper Ian C. Garcia</div>
+                        <div class="hero-card-role">Full-Stack Developer</div>
+                        <div class="hero-card-stats">
+                            <div class="stat">
+                                <span class="stat-num" data-count="3">0</span>
+                                <span class="stat-label">Yrs Exp</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num" data-count="10">0</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num" data-count="10">0</span>
+                                <span class="stat-label">Clients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-scroll" aria-hidden="true">
+                <span>Scroll Down</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section id="projects" aria-label="Featured Projects">
+            <div class="section-header">
+                <span class="section-tag reveal">// Initiative — Featured Work</span>
+                <h2 class="section-title reveal reveal-delay-1">Featured <span>Projects</span></h2>
+                <div class="section-divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="carousel-wrapper reveal">
+                <div class="carousel-track" id="carouselTrack" role="list">
+
+                    <div class="project-card" role="listitem">
+                        <div class="project-inner">
+                            <div class="project-media">
+                                <div class="media-aspect">
+                                    <div class="media-placeholder">
+                                        <!-- <i class="fa-solid fa-film" aria-hidden="true"></i>
+                                        <p>PROJECT VIDEO / SCREENSHOT</p>
+                                        <span class="video-upload-hint">Replace with &lt;video&gt; or &lt;img&gt; tag</span> -->
+                                        <video src="./assets/videos/dazzling-images.mp4" class="d-block w-100"  controls controlslist="nodownload" loop autoplay muted></video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <div class="project-number">PROJECT / 01</div>
+                                    <h3 class="project-title">Dazzling Images Website</h3>
+                                    <p class="project-problem" style="text-align: justify;">A photography website acts as a professional digital portfolio that showcases talent to attract a global audience of clients and collaborators. It serves as a powerful platform for visual storytelling, allowing photographers to share their unique perspectives with the world.</p>
+                                    <ul class="project-features">
+                                        <li>High-impact visual portfolio galleries</li>
+                                        <li>Seamless client booking and inquiries</li>
+                                        <li>Global reach with responsive design</li>
+                                        <li>Story-driven photo presentation</li>
+                                    </ul>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">HTML</span>
+                                        <span class="tech-badge">CSS</span>
+                                        <span class="tech-badge">Bootstrap</span>
+                                        <span class="tech-badge">JavaScript</span>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://jaspergarcia27.github.io/Dazzling-Images/" target="_blank" class="btn-sm filled">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" role="listitem">
+                        <div class="project-inner">
+                            <div class="project-media">
+                                <div class="media-aspect">
+                                <div class="media-placeholder">
+                                    <video src="./assets/videos/saitama-driving-instructor.mp4" class="d-block w-100"  controls controlslist="nodownload" loop autoplay muted></video>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <div class="project-number">PROJECT / 02</div>
+                                    <h3 class="project-title">Saitama Driving Instructor</h3>
+                                    <p class="project-problem" style="text-align: justify;">A driving school website serves as a vital resource hub that equips students with the essential skills and confidence for the road. By providing accessible content and streamlined registration, it helps develop responsible drivers who contribute to overall community safety.</p>
+                                    <ul class="project-features">
+                                        <li>Easy online enrollment and scheduling</li>
+                                        <li>Comprehensive driving lesson resources</li>
+                                        <li>Interactive course and progress tracking</li>
+                                        <li>User-friendly and accessible interface</li>
+                                    </ul>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">HTML</span>
+                                        <span class="tech-badge">CSS</span>
+                                        <span class="tech-badge">Bootstrap</span>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="btn-sm filled">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" role="listitem">
+                        <div class="project-inner">
+                            <div class="project-media">
+                                <div class="media-aspect">
+                                <div class="media-placeholder">
+                                    <video src="./assets/videos/yearbook.mp4" class="d-block w-100"  controls controlslist="nodownload" loop autoplay muted></video>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <div class="project-number">PROJECT / 03</div>
+                                    <h3 class="project-title">BSCPE Batch 2023 Year Book</h3>
+                                    <p class="project-problem" style="text-align: justify;">A practice website provides a versatile, supportive environment for learners to refine their skills and gain mastery across various subjects. By offering a platform for experimentation and targeted exercises, it empowers users to build the competence and confidence necessary to reach their educational goals..</p>
+                                    <ul class="project-features">
+                                        <li>Interactive exercises and skill-building tools</li>  
+                                        <li>Progress tracking and performance insights</li>  
+                                        <li>Personalized learning paths</li>  
+                                        <li>User-friendly and engaging interface</li>
+                                    </ul>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">HTML</span>
+                                        <span class="tech-badge">CSS</span>
+                                        <span class="tech-badge">Bootstrap</span>
+                                        <span class="tech-badge">JavaScript</span>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="btn-sm filled">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" role="listitem">
+                        <div class="project-inner">
+                            <div class="project-media">
+                                <div class="media-aspect">
+                                <div class="media-placeholder">                                
+                                    <video src="./assets/videos/prototype.mp4" class="d-block w-100"  controls controlslist="nodownload" loop autoplay muted></video>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <div class="project-number">PROJECT / 04</div>
+                                    <h3 class="project-title">Prototype: Design Project</h3>
+                                    <p class="project-problem" style="text-align: justify;">The Arduino Mega serves as the core of an IoT-based system designed to automate watering and monitor environmental data for residential plants on Tuntungin Street. By integrating soil sensors with a web-based application, the system allows cultivators to manage water usage efficiently and promote healthy plant growth through remote control and real-time data analysis.</p>
+                                    <ul class="project-features">
+                                        <li>Real-time soil moisture monitoring</li>  
+                                        <li>Automated watering with smart control</li>  
+                                        <li>Remote access via web application</li>  
+                                        <li>Efficient water usage and plant care</li>
+                                    </ul>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">HTML</span>
+                                        <span class="tech-badge">CSS</span>
+                                        <span class="tech-badge">Bootstrap</span>
+                                        <span class="tech-badge">JavaScript</span>
+                                        <span class="tech-badge">C++</span>
+                                        <span class="tech-badge">PHP</span>
+                                        <span class="tech-badge">MySQL</span>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://drive.google.com/file/d/1W0IAr46KYXi6Nymhu21Yzuf_z_w_zNSi/view?usp=sharing" class="btn-sm filled">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" role="listitem">
+                        <div class="project-inner">
+                            <div class="project-media">
+                                <div class="media-aspect">
+                                <div class="media-placeholder">                                
+                                    <video src="./assets/videos/embedded.mp4" class="d-block w-100"  controls controlslist="nodownload" loop autoplay muted></video>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <div class="project-number">PROJECT / 05</div>
+                                    <h3 class="project-title">Other Emebedded IoT Projects</h3>
+                                    <p class="project-problem" style="text-align: justify;">The IoT home security system integrates ESP8266-connected sensors to provide real-time monitoring and instant alerts for threats like unauthorized entry, gas leaks, and fires. By overcoming the limitations of conventional security, this technology ensures a high-quality living environment and proactively prevents property damage.</p>
+                                    <ul class="project-features">
+                                        <li>Real-time home security monitoring</li>  
+                                        <li>Instant alerts for intrusion and hazards</li>  
+                                        <li>Smart sensor integration with ESP8266</li>  
+                                        <li>Remote access and automated response</li>
+                                    </ul>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">C++</span>
+                                    </div>
+                                </div>
+                                <!-- <div class="project-links">
+                                    <a href="https://drive.google.com/file/d/1W0IAr46KYXi6Nymhu21Yzuf_z_w_zNSi/view?usp=sharing" class="btn-sm filled">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                                    </a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="carousel-controls reveal">
+                <button class="carousel-btn" id="prevBtn" aria-label="Previous project">
+                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Project slides"></div>
+                <button class="carousel-btn" id="nextBtn" aria-label="Next project">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- TECH STACK - SKILL BARS REPLACED WITH CHIP TAGS -->
+        <section id="stack" aria-label="Core Technology Stack">
+            <div class="section-header">
+                <span class="section-tag reveal">// Armory — Tech Arsenal</span>
+                <h2 class="section-title reveal reveal-delay-1">Core <span>Tech Stack</span></h2>
+                <div class="section-divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="stack-grid">
+                <!-- Backend -->
+                <div class="stack-category backend reveal">
+                    <div class="stack-cat-header">
+                        <div class="stack-cat-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+                        <div class="stack-cat-name">Backend</div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fa-brands fa-php" style="color:#8993be"></i> PHP</div>
+                        <div class="skill-item"><i class="fa-solid fa-leaf" style="color:#ff2d20"></i> Laravel</div>
+                        <div class="skill-item"><i class="fa-solid fa-code" style="color:#9b59b6"></i> ASP.NET</div>
+                        <div class="skill-item"><i class="fa-brands fa-node-js" style="color:#339933"></i> Node.js</div>
+                        <div class="skill-item"><i class="fa-solid fa-plug" style="color:#38bdf8"></i> REST APIs</div>
+                        <div class="skill-item"><i class="fa-solid fa-database" style="color:#4fc3f7"></i> MERN</div>
+                    </div>
+                    <div class="skill-tags-wrap">
+                        <div class="skill-tags-label">Specializations</div>
+                        <div class="skill-tags">
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>API Architecture</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>MVC Patterns</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>Authentication</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>Microservices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend -->
+                <div class="stack-category frontend reveal reveal-delay-2">
+                    <div class="stack-cat-header">
+                        <div class="stack-cat-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
+                        <div class="stack-cat-name">Frontend</div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fa-brands fa-vuejs" style="color:#42b883"></i> Vue.js</div>
+                        <div class="skill-item"><i class="fa-brands fa-react" style="color:#61dafb"></i> React</div>
+                        <div class="skill-item"><i class="fa-brands fa-js" style="color:#f7df1e"></i> JavaScript</div>
+                        <div class="skill-item"><i class="fa-solid fa-wind" style="color:#4fc3f7"></i> Tailwind</div>
+                        <div class="skill-item"><i class="fa-brands fa-html5" style="color:#e34f26"></i> HTML5</div>
+                        <div class="skill-item"><i class="fa-brands fa-css3-alt" style="color:#1572b6"></i> CSS3</div>
+                    </div>
+                    <div class="skill-tags-wrap">
+                        <div class="skill-tags-label">Specializations</div>
+                        <div class="skill-tags">
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>SPA Development</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>Responsive Design</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>State Management</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="stack-category tools reveal reveal-delay-3">
+                    <div class="stack-cat-header">
+                        <div class="stack-cat-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
+                        <div class="stack-cat-name">Tools & Database</div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fa-solid fa-database" style="color:#4479a1"></i> MySQL</div>
+                        <div class="skill-item"><i class="fa-brands fa-git-alt" style="color:#f05032"></i> Git</div>
+                        <div class="skill-item"><i class="fa-brands fa-docker" style="color:#2496ed"></i> Docker</div>
+                        <div class="skill-item"><i class="fa-solid fa-leaf" style="color:#589636"></i> MongoDB</div>
+                        <div class="skill-item"><i class="fa-solid fa-terminal" style="color:#38bdf8"></i> CLI</div>
+                        <div class="skill-item"><i class="fa-solid fa-cloud" style="color:#4fc3f7"></i> CI/CD</div>
+                    </div>
+                    <div class="skill-tags-wrap">
+                        <div class="skill-tags-label">Specializations</div>
+                        <div class="skill-tags">
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>Database Design</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>Version Control</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>Containerization</span>
+                        <span class="skill-tag-chip"><i class="fa-solid fa-bolt"></i>Deployment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- EXPERIENCE / TIMELINE -->
+        <section id="experience" aria-label="Experience and Milestones">
+            <div class="section-header">
+                <span class="section-tag reveal">// Chronicle — Career Path</span>
+                <h2 class="section-title reveal reveal-delay-1">Experience & <span>Milestones</span></h2>
+                <div class="section-divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item project-launch reveal">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2024 — Present</span>
+                        <span class="timeline-type">Project Launch</span>
+                    </div>
+                    <div class="timeline-title">Freelance Full-Stack Developer</div>
+                    <div class="timeline-org">Freelance / Remote</div>
+                    <p class="timeline-desc">Working as a freelance web developer specializing in Laravel. I build end-to-end web applications and business automation systems, delivering tailored solutions for various client needs.</p>
+                </div>
+                
+                <div class="timeline-item promotion reveal reveal-delay-3">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2023</span>
+                        <span class="timeline-type">Training</span>
+                    </div>
+                    <div class="timeline-title">Full-Stack Developer</div>
+                    <div class="timeline-org">Startup / Web Agency - Zuitt Bootcamp</div>
+                    <p class="timeline-desc">Enrolled in Zuitt Bootcamp to strengthen my web development skills. Gained hands-on experience building full-stack applications using Laravel with a focus on practical, real-world development workflows.</p>
+                </div>
+
+                <div class="timeline-item education reveal reveal-delay-4">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2019 — 2023</span>
+                        <span class="timeline-type">Education</span>
+                    </div>
+                    <div class="timeline-title">BS Computer Engineering</div>
+                    <div class="timeline-org">Laguna College of Business and Arts — Calamba City, Laguna</div>
+                    <p class="timeline-desc">Thesis focused on business process digitization. Former member of the ICPEP Organization.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SERVICES -->
+        <section id="services" aria-label="Services">
+            <div class="section-header">
+                <span class="section-tag reveal">// Protocols — What I Offer</span>
+                <h2 class="section-title reveal reveal-delay-1">Services <span>Provided</span></h2>
+                <div class="section-divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal" onmousemove="trackMouse(event,this)">
+                    <div class="service-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+                    <div class="service-title">Custom Web Application Development</div>
+                    <p class="service-desc">Full-cycle development of scalable web applications tailored to your business logic — from database architecture to intuitive UI/UX design.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Laravel</span>
+                        <span class="service-tag">Vue.js</span>
+                        <span class="service-tag">React</span>
+                        <span class="service-tag">REST API</span>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-2" onmousemove="trackMouse(event,this)">
+                    <div class="service-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+                    <div class="service-title">Business Process Automation</div>
+                    <p class="service-desc">Identify manual, repetitive workflows and replace them with intelligent, automated systems — from approval chains to reporting pipelines.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Workflow Engine</span>
+                        <span class="service-tag">Scheduling</span>
+                        <span class="service-tag">Email Automation</span>
+                        <span class="service-tag">APIs</span>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-3" onmousemove="trackMouse(event,this)">
+                    <div class="service-icon"><i class="fa-solid fa-rotate" aria-hidden="true"></i></div>
+                    <div class="service-title">Modernizing Legacy Systems</div>
+                    <p class="service-desc">Migrate aging systems to modern, cloud-ready architectures without disrupting ongoing operations — with data integrity at every step.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Migration</span>
+                        <span class="service-tag">Refactoring</span>
+                        <span class="service-tag">API Integration</span>
+                        <span class="service-tag">Cloud</span>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-1" onmousemove="trackMouse(event,this)">
+                    <div class="service-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+                    <div class="service-title">ERP & Management Dashboards</div>
+                    <p class="service-desc">Bespoke management dashboards and ERP modules that give decision-makers real-time insight into business performance, inventory, and operations.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Analytics</span>
+                        <span class="service-tag">Reporting</span>
+                        <span class="service-tag">Real-time</span>
+                        <span class="service-tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-2" onmousemove="trackMouse(event,this)">
+                    <div class="service-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></div>
+                    <div class="service-title">Responsive UI/UX Design</div>
+                    <p class="service-desc">Design and build pixel-perfect, mobile-first interfaces with Tailwind CSS — creating experiences users actually enjoy using across all devices.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Tailwind</span>
+                        <span class="service-tag">Mobile-first</span>
+                        <span class="service-tag">Accessibility</span>
+                        <span class="service-tag">Figma</span>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-3" onmousemove="trackMouse(event,this)">
+                    <div class="service-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                    <div class="service-title">API Development & Integration</div>
+                    <p class="service-desc">Build robust, well-documented REST APIs or integrate third-party services — payment gateways, SMS/email providers, government APIs, and more.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">REST API</span>
+                        <span class="service-tag">OAuth</span>
+                        <span class="service-tag">Webhooks</span>
+                        <span class="service-tag">Postman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CONTACT -->
+        <section id="contact" aria-label="Contact">
+            <div class="contact-outer">
+                <div class="section-header">
+                    <span class="section-tag reveal">// Comms — Let's Connect</span>
+                    <h2 class="section-title reveal reveal-delay-1">Get in <span>Touch</span></h2>
+                    <div class="section-divider reveal reveal-delay-2"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-form-wrap reveal">
+                        <div class="form-steps" role="tablist" aria-label="Form steps">
+                            <div class="form-step-indicator active" id="si1" role="tab" aria-selected="true">
+                                <div class="step-num">01</div>
+                                <span>IDENTITY</span>
+                            </div>
+                            <div class="form-step-indicator" id="si2" role="tab" aria-selected="false">
+                                <div class="step-num">02</div>
+                                <span>PROJECT</span>
+                            </div>
+                            <div class="form-step-indicator" id="si3" role="tab" aria-selected="false">
+                                <div class="step-num">03</div>
+                                <span>MESSAGE</span>
+                            </div>
+                        </div>
+
+                        <div class="form-panel active" id="panel1">
+                            <div class="form-group">
+                                <label class="form-label" for="fname">Full Name</label>
+                                <input class="form-input" type="text" id="fname" name="fname" placeholder="John Doe" autocomplete="name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="femail">Email Address</label>
+                                <input class="form-input" type="email" id="femail" name="femail" placeholder="johndoe@mail.com" autocomplete="email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fcompany">Company / Organization</label>
+                                <input class="form-input" type="text" id="fcompany" name="fcompany" placeholder="Stark Industries (optional)" />
+                            </div>
+                            <div class="form-nav">
+                                <span style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--text-secondary);letter-spacing:0.15em;">STEP 1 OF 3</span>
+                                <button class="btn-primary" onclick="nextStep(2)">Next <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-panel" id="panel2">
+                            <div class="form-group">
+                                <label class="form-label" for="ftype">Project Type</label>
+                                <select class="form-select" id="ftype" name="ftype">
+                                <option value="">Select type...</option>
+                                <option>Custom Web Application</option>
+                                <option>Business Process Automation</option>
+                                <option>Legacy System Modernization</option>
+                                <option>API Development / Integration</option>
+                                <option>UI/UX Design</option>
+                                <option>Consultation</option>
+                                <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fbudget">Estimated Budget</label>
+                                <select class="form-select" id="fbudget" name="fbudget">
+                                <option value="">Select range...</option>
+                                <option>Under ₱10,000</option>
+                                <option>₱10,000 – ₱50,000</option>
+                                <option>₱50,000 – ₱150,000</option>
+                                <option>₱150,000+</option>
+                                <option>Open to discuss</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="ftimeline">Timeline</label>
+                                <select class="form-select" id="ftimeline" name="ftimeline">
+                                <option value="">Select timeline...</option>
+                                <option>ASAP (under 2 weeks)</option>
+                                <option>1 month</option>
+                                <option>2–3 months</option>
+                                <option>3–6 months</option>
+                                <option>Flexible</option>
+                                </select>
+                            </div>
+                            <div class="form-nav">
+                                <button class="btn-secondary" onclick="prevStep(1)"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</button>
+                                <button class="btn-primary" onclick="nextStep(3)">Next <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-panel" id="panel3">
+                            <div class="form-group">
+                                <label class="form-label" for="fsubject">Subject</label>
+                                <input class="form-input" type="text" id="fsubject" name="fsubject" placeholder="Project inquiry" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fmessage">Your Message</label>
+                                <textarea class="form-textarea" id="fmessage" name="fmessage" placeholder="Tell me about your project, goals, or questions..."></textarea>
+                            </div>
+                            <div class="form-nav">
+                                <button class="btn-secondary" onclick="prevStep(2)"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</button>
+                                <button class="btn-primary" onclick="submitForm()">
+                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Message
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-success" id="formSuccess" role="alert">
+                        <span class="success-icon" aria-hidden="true">✓</span>
+                        <h3>Message Transmitted</h3>
+                        <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info reveal reveal-delay-2">
+                        <div class="contact-info-card">
+                            <div style="font-family:'Orbitron',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;color:var(--text-primary);margin-bottom:1rem;text-transform:uppercase;">Direct Lines</div>
+                            <div class="contact-link-list">
+                                <a href="jaspergarcia200127@gmail.com" class="contact-link">
+                                    <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                                    jaspergarcia200127@gmail.com
+                                </a>                                
+                                <a href="https://github.com/JasperGarcia27" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    JasperGarcia27
+                                </a>
+                                <a href="https://www.facebook.com/jasper.garcia.10690" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                    <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                    Jasper Garcia
+                                </a>
+                                <a href="https://www.instagram.com/jaspergarcia_15/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                    JasperGarcia_15
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="map-wrapper reveal reveal-delay-3">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123778.7778342453!2d121.03538542577138!3d14.189693751170598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6370ebbfebf1%3A0x3253adc5365fa80a!2sCalamba%20City%2C%20Laguna!5e0!3m2!1sen!2sph!4v1693112367058!5m2!1sen!2sph"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Location map — Calamba City, Laguna, Philippines"
+                                aria-label="Google Map showing Calamba City, Lagunae, Philippines"
+                            >
+                            </iframe>
+                            <div class="map-overlay">
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                Calamba City, Laguna, PH
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-arc">
+            <div class="mini-arc" aria-hidden="true"></div>
+            DEVFOLIO
+            </div>
+            <div class="footer-copy">
+            &copy; 2023 — Designed & Engineered with purpose. All rights reserved.
+            </div>
+            <div class="footer-copy" style="color:var(--text-secondary);">
+            <i class="fa-solid fa-location-dot" style="color:var(--red-bright)" aria-hidden="true"></i>
+            Calamba City, Laguna, PH
+            </div>
+        </div>
+    </footer>
+    
+    <script src="./index.js"></script>
+</body>
+</html>
